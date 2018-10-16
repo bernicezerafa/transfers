@@ -4,17 +4,17 @@ import java.math.BigDecimal;
 
 public class BankAccount {
 
-    private final long id;
+    private final String reference;
     private final BigDecimal amount;
 
-    public BankAccount(final long id,
+    public BankAccount(final String reference,
                        final BigDecimal amount) {
-        this.id = id;
+        this.reference = reference;
         this.amount = amount;
     }
 
-    public long getId() {
-        return id;
+    public String getReference() {
+        return reference;
     }
 
     public BigDecimal getAmount() {
@@ -23,6 +23,6 @@ public class BankAccount {
 
     @Override
     public String toString() {
-        return id + " - " + amount;
+        return reference + " - " + amount;
     }
 }

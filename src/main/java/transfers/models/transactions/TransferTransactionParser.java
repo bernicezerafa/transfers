@@ -3,6 +3,7 @@ package transfers.models.transactions;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -22,23 +23,23 @@ public class TransferTransactionParser {
         this.statements = statements;
     }
 
-    public Set<TransferTransaction> parse() {
+    public Set<Transfer> parse() {
         return statements.stream().map(values -> {
             final BigDecimal transferAmount = getTransferAmount(values);
-            return new TransferTransaction(getTransferId(values),
-                    new TransactionParticipation(getSourceBankAccountId(values), transferAmount.negate()),
-                    new TransactionParticipation(getDestinationBankAccountId(values), transferAmount),
+            return new Transfer(getTransferId(values),
+                    getSourceBankAccountReference(values),
+                    getDestinationBankAccountReference(values),
                     transferAmount,
-                    getTransferredOn(values));
+                    new Date());
         }).collect(Collectors.toSet());
     }
 
-    private Long getSourceBankAccountId(final List<String> values) {
-        return Long.valueOf(values.get(SOURCE_BANK_ACCOUNT_ID_INDEX));
+    private String getSourceBankAccountReference(final List<String> values) {
+        return values.get(SOURCE_BANK_ACCOUNT_ID_INDEX);
     }
 
-    private Long getDestinationBankAccountId(final List<String> values) {
-        return Long.valueOf(values.get(DESTINATION_BANK_ACCOUNT_ID_INDEX));
+    private String getDestinationBankAccountReference(final List<String> values) {
+        return values.get(DESTINATION_BANK_ACCOUNT_ID_INDEX);
     }
 
     private BigDecimal getTransferAmount(final List<String> values) {

@@ -1,5 +1,5 @@
 FROM openjdk:8-jdk-alpine
-LABEL maintainer="bernce.zerafa11@gmail.com"
+LABEL maintainer="bernice.zerafa11@gmail.com"
 VOLUME /tmp
 ARG JAR_FILE=target/transfers-0.1.0.jar
 ADD ${JAR_FILE} transfers.jar
