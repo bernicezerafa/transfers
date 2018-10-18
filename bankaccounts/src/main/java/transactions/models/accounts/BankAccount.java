@@ -1,4 +1,4 @@
-package transfers.models.accounts;
+package transactions.models.accounts;
 
 import java.math.BigDecimal;
 

@@ -1,0 +1,11 @@
+CREATE DATABASE IF NOT EXISTS `transfers`;
+USE `transfers`;
+
+CREATE TABLE IF NOT EXISTS `transactions` (
+  `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `source` VARCHAR(255) NOT NULL,
+  `destination` VARCHAR(255) NOT NULL,
+  `transferAmount` DECIMAL(4, 2) NOT NULL,
+  `transferredOn` TIMESTAMP NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
