@@ -10,7 +10,7 @@ services:
       - DATABASE_HOST=192.168.99.100 # change to mysql if running without docker-machine
       - DATABASE_USERNAME=root
       - DATABASE_PASSWORD=root
-      - DATABASE_NAME=transactions
+      - DATABASE_NAME=transfers
       - DATABASE_PORT=13306 # change to 3306 if running without docker-machine
   bankaccounts:
     image: bernicezerafa11/bankaccounts:latest
